@@ -41,7 +41,7 @@ function calculateMerit() {
     if (power <= 30000000) {
         merit = power * 0.002; // 0.002 merit per power for less than 30 million
     } else if (power > 30000000 && power <= 100000000) {
-        merit = power * 0.004;// 0.004 merit per power for 30-50 million
+        merit = power * 0.004;// 0.004 merit per power for 30-100 million
     } 
 
     document.getElementById("meritOutput").innerText = "Merit required: " + merit.toLocaleString();
