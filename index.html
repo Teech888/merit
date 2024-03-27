@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merit Calculator</title>
+<style>
+    input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>Merit Calculator</h2>
+<p>Input player power (max 100M):</p>
+<input type="text" id="powerInput">
+<button onclick="calculateMerit()">Calculate Merit</button>
+<p id="meritOutput"></p>
+
+<script>
+function calculateMerit() {
+    var powerInput = document.getElementById("powerInput").value;
+    var power = parseFloat(powerInput);
+    if (isNaN(power)) {
+        alert("Please enter a valid number.");
+        return;
+    }
+    if (power < 1000000 || power > 100000000) {
+        alert("Please enter a number between 1,000,000 and 100,000,000.");
+        return;
+    }
+
+    var merit;
+    if (power <= 30000000) {
+        merit = power * 0.002; // 0.002 merit per power for less than 30 million
+    } else if (power > 30000000 && power <= 100000000) {
+        merit = power * 0.004;// 0.004 merit per power for 30-50 million
+    } 
+
+    document.getElementById("meritOutput").innerText = "Merit required: " + merit.toLocaleString();
+}
+</script>
+
+</body>
+</html>
